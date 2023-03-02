@@ -1,5 +1,5 @@
 import expressAsyncHandler from "express-async-handler";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import signupData from "../model/signupModel.js";
 
 export const userSignup = expressAsyncHandler(async (req, res) => {
@@ -14,7 +14,7 @@ export const userSignup = expressAsyncHandler(async (req, res) => {
         } else if (password!= confirm) {
             return res.status(422).json({error: "Re-check the password"});
         } else{
-            const user = new user({ fname, lname, email, password, confirm});
+            const user = new signupData({ fname, lname, email, password, confirm});
 
             await user.save();
             res.status(201).json({message: "user registered successfuly"});
